@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CoffeeShopApp</string>
+    <string name="coffee_title">Cappuccino Coffee</string>
+    <string name="cont_desc_img_coffee">Coffee Image</string>
+    <string name="cont_desc_coffee">Cold Brew</string>
+    <string name="cont_desc_coffee_price">$12.00</string>
+    <string name="cont_desc_icon_star">Star icon</string>
+    <string name="cont_desc_coffee_rating">4.5</string>
+    <string name="four_table_spoon">4 tbs</string>
+    <string name="two_table_spoon">2 tbs</string>
+    <string name="cheese">Cheese</string>
+    <string name="milk">Milk</string>
+    <string name="sugar">Sugar</string>
+    <string name="cup_size">Cup Size</string>
+    <string name="small_letter">S</string>
+    <string name="medium_letter">M</string>
+    <string name="large_letter">L</string>
+    <string name="x_large_letter">XL</string>
+    <string name="add_to_cart">Add to Cart</string>
+</resources>
