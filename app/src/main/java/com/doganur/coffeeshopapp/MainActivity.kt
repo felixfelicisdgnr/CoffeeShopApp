@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,7 +40,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.doganur.coffeeshopapp.ui.theme.AppTheme
-import com.doganur.coffeeshopapp.ui.theme.DarkBrownColor
 import com.doganur.coffeeshopapp.ui.theme.PrimaryColor
 import com.doganur.coffeeshopapp.ui.theme.TextColor
 import com.doganur.coffeeshopapp.ui.theme.currentFont
@@ -63,7 +63,7 @@ fun HomePage() {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Coffee Shop",
+                        text = stringResource(R.string.app_name),
                         fontFamily = currentFont,
                     )
                 },
@@ -77,12 +77,13 @@ fun HomePage() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.Center
         ) {
             Image(
                 modifier = Modifier
                     .height(300.dp)
                     .fillMaxWidth()
+                    .padding(horizontal = 8.dp)
                     .clip(shape = RoundedCornerShape(20.dp)),
                 painter = painterResource(id = R.drawable.coffee),
                 contentDescription = stringResource(R.string.cont_desc_img_coffee),
@@ -90,118 +91,120 @@ fun HomePage() {
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Cappuccino Coffee",
+                    text = stringResource(R.string.coffee_title),
                     fontFamily = currentFont,
                     fontSize = 24.sp,
-                    color = TextColor
-
+                    color = if (isSystemInDarkTheme()) Color.White else TextColor
                 )
                 Text(
-                    text = "$12.00",
+                    text = stringResource(R.string.cont_desc_coffee_price),
                     fontFamily = currentFont,
                     fontSize = 24.sp,
-                    color = DarkBrownColor
+                    color = if (isSystemInDarkTheme()) Color.White else TextColor
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "Cold Brew",
+                modifier = Modifier
+                    .padding(8.dp),
+                text = stringResource(R.string.cont_desc_coffee),
                 fontFamily = currentFont,
                 fontSize = 16.sp,
                 color = TextColor
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painterResource(id = R.drawable.ic_star),
-                    contentDescription = null,
-                    tint = Color(0xFFEEDB33)
-                )
-
-                Icon(
-                    painterResource(id = R.drawable.ic_star),
-                    contentDescription = null,
-                    tint = Color(0xFFEEDB33)
-                )
-
-                Icon(
-                    painterResource(id = R.drawable.ic_star),
-                    contentDescription = null,
-                    tint = Color(0xFFEEDB33)
-                )
-
-                Icon(
-                    painterResource(id = R.drawable.ic_star),
-                    contentDescription = null,
-                    tint = Color(0xFFEEDB33)
-                )
+            Row(
+                modifier = Modifier
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                repeat(4) {
+                    Icon(
+                        painterResource(id = R.drawable.ic_star),
+                        contentDescription = stringResource(R.string.cont_desc_icon_star),
+                        tint = Color(0xFFEEDB33)
+                    )
+                }
 
                 Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
-                    text = "5.0",
+                    text = stringResource(R.string.cont_desc_coffee_rating),
                     fontFamily = currentFont,
                     fontSize = 16.sp,
                     color = TextColor
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
-                    "4 tbs\nMilk",
+                    text = "${stringResource(R.string.four_table_spoon)}\n${stringResource(R.string.milk)}",
                     fontFamily = currentFont,
                     fontSize = 16.sp,
                     color = TextColor
                 )
 
                 Text(
-                    "2 tbs\nSugar",
+                    text = "${stringResource(R.string.two_table_spoon)}\n${stringResource(R.string.sugar)}",
                     fontFamily = currentFont,
                     fontSize = 16.sp,
                     color = TextColor
                 )
 
                 Text(
-                    "Cheese\nTopping",
+                    text = stringResource(R.string.cheese),
                     fontFamily = currentFont,
                     fontSize = 16.sp,
                     color = TextColor
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Cup Size",
+                modifier = Modifier
+                    .padding(8.dp),
+                text = stringResource(R.string.cup_size),
                 fontFamily = currentFont,
                 fontSize = 16.sp,
                 color = TextColor
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                listOf("S", "M", "L", "XL").forEach { size ->
+                listOf(
+                    stringResource(R.string.small_letter),
+                    stringResource(R.string.medium_letter),
+                    stringResource(R.string.large_letter),
+                    stringResource(R.string.x_large_letter)
+                ).forEach { size ->
                     Box(
                         modifier = Modifier
                             .size(40.dp)
                             .border(1.dp, Color.Gray, CircleShape)
                             .background(
-                                if (size == "M") Color(0xFFD7CCC8) else Color.Transparent,
+                                if (size == stringResource(R.string.medium_letter)) Color(0xFFD7CCC8) else Color.Transparent,
                                 CircleShape
                             ),
                         contentAlignment = Alignment.Center
@@ -218,11 +221,17 @@ fun HomePage() {
 
             Button(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8D6E63)),
+                    .fillMaxWidth()
+                    .clip(shape = RoundedCornerShape(20.dp))
+                    .padding(8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF8D6E63)
+                ),
                 onClick = { /*TODO*/ }
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_basket),
                         contentDescription = null,
@@ -232,7 +241,7 @@ fun HomePage() {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Add to Cart",
+                        text = stringResource(R.string.add_to_cart),
                         fontFamily = currentFont, fontSize = 16.sp, color = TextColor
                     )
                 }
@@ -240,7 +249,6 @@ fun HomePage() {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
